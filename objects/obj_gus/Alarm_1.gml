@@ -1,0 +1,3 @@
+if (rollOnCD){
+	rollOnCD = false;
+}
