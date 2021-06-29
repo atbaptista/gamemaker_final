@@ -73,3 +73,22 @@ if(attacking){
 }
 
 #endregion
+
+
+#region Collision
+
+if(instance_place(x+hspeed, y, obj_wall)){
+	hspeed = 0;
+}
+if(instance_place(x, y+vspeed, obj_wall)){
+	vspeed = 0;
+}
+
+#endregion
+
+
+#region 
+
+
+
+#endregion
