@@ -84,6 +84,13 @@ if(instance_place(x, y+vspeed, obj_wall)){
 	vspeed = 0;
 }
 
+if(instance_place(x+hspeed, y, obj_enemy1)){
+	hspeed = 0;
+}
+if(instance_place(x, y+vspeed, obj_enemy1)){
+	vspeed = 0;
+}
+
 #endregion
 
 
