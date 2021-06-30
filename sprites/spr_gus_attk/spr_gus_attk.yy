@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "gus",
+    "path": "folders/Sprites/gus.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_gus_attk",

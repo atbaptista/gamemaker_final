@@ -1,1 +1,1 @@
-instance_destroy(obj_damage);
+//instance_destroy(obj_damage);

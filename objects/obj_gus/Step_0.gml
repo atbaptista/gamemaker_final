@@ -8,6 +8,7 @@ var left = keyboard_check(ord("A"));
 var right = keyboard_check(ord("D"));
 var roll = keyboard_check(vk_space);
 var attack = mouse_check_button_pressed(mb_left);
+var anim = spr_gus;
 
 #endregion
 
@@ -15,6 +16,63 @@ var attack = mouse_check_button_pressed(mb_left);
 #region Moving
 
 if (state == "move_state"){
+	if (!attacking){
+		switch(direction){
+			case 0:
+				sprite_index = spr_gus_right_m;
+				break;
+			case 45:
+				sprite_index = spr_gus_right_up_m;
+				break;
+			case 90:
+				sprite_index = spr_gus_up_m;
+				break;
+			case 135:
+				sprite_index = spr_gus_left_up_m;
+				break;
+			case 180:
+				sprite_index = spr_gus_left_m;
+				break;
+			case 225:
+				sprite_index = spr_gus_left_down_m;
+				break;
+			case 270:
+				sprite_index = spr_gus_down_m;
+				break;
+			case 315:
+				sprite_index = spr_gus_right_down_m;
+				break;
+		}
+	}
+	if(!attacking && speed == 0){
+		switch(direction){
+			case 0:
+				sprite_index = spr_gus_right_i;
+				break;
+			case 45:
+				sprite_index = spr_gus_right_up_i;
+				break;
+			case 90:
+				sprite_index = spr_gus_up_i;
+				break;
+			case 135:
+				sprite_index = spr_gus_left_up_i;
+				break;
+			case 180:
+				sprite_index = spr_gus_left_i;
+				break;
+			case 225:
+				sprite_index = spr_gus_left_down_i;
+				break;
+			case 270:
+				sprite_index = spr_gus_down_i;
+				break;
+			case 315:
+				sprite_index = spr_gus_right_down_i;
+				break;
+		}
+	}
+	//sprite_index = spr_gus;
 	//calculate direction
 	move_x = right - left;
 	move_y = down - up;
@@ -24,12 +82,10 @@ if (state == "move_state"){
 		//point in one of 8 directions
 		mdirection = point_direction(0, 0, move_x, move_y);     
 		direction = mdirection;
-		
 		//change speed
 		speed = mspeed;	
-		
 	//momentum if i ever make the move speed fast
-	} else if (speed > 0){
+	} else if (speed > 0){		
 		speed--;	
 	}
 }
@@ -43,7 +99,10 @@ if (state == "move_state"){
 if (roll && (state != "roll_state") && !rollOnCD){
 	state = "roll_state";
 	//roll length
-	alarm[0] = 15;
+	if(!attacking){
+		sprite_index = spr_gus_down_r;
+	}
+	//alarm[0] = 15;
 }
 
 //roll code
@@ -58,6 +117,7 @@ if(state == "roll_state"){
 
 //check if attack pressed
 if(attack && state != "roll_state" && !attacking){
+	show_debug_message("attacking");
 	attacking = true;
 	//attack animation
 	sprite_index = spr_gus_attk;
@@ -65,8 +125,13 @@ if(attack && state != "roll_state" && !attacking){
 
 //attack
 if(attacking){
+	show_debug_message("attacking code");
 	//second frame of the attack and if the hitbox doesnt exist 
+	if(true){
+		
+	}
 	if(image_index >= 2 && !instance_exists(obj_damage)){
+		show_debug_message("spawnbox");
 		//set timer to delete the attack hitbox
 		alarm[2] = 2;
 		//create sword hitbox to the right of the player
@@ -150,5 +215,16 @@ if(place_meeting(x,y,obj_return)){
 	room_goto(temp);
 	global.returned = true;
 }
+
+#endregion
+
+
+#region Animations and Sounds
+/*
+if(anim != sprite_index){
+	sprite_index = anim;
+} 	
+*/
+
 
 #endregion
