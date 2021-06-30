@@ -1,3 +1,5 @@
+/// @description obj_gus step code
+
 #region Variables
 
 var up = keyboard_check(ord("W"));
@@ -116,8 +118,35 @@ if(instance_place(x, y+vspeed, obj_enemy1)){
 #endregion
 
 
-#region 
+#region Enter Different Area
 
-//test
+/* player might have to play through entire area again if they 
+walk through the change level obj after exit, think of way to 
+prevent that from happening */
+
+//check if returned to main room
+if(global.returned){
+	//teleport player outside of the dungeon/level whatever
+	x = global.prev_x;
+	y = global.prev_y+20; //20 pixels lower so they dont teleport back instantly
+	//set global returned to false
+	global.returned = false;
+}
+
+//change creation code of obj_change_level to whichever room u want to teleport the player to
+var nextArea = instance_place(x,y, obj_change_level);
+//if touching changelvl obj save location and go to the specified room
+if(nextArea){
+	global.prev_x = x;
+	global.prev_y = y;
+	room_goto(nextArea.nextRoom);
+}
+
+//send player back to the main room and set the returned var to true
+if(place_meeting(x,y,obj_return)){
+	//change this to main room after levels are made
+	room_goto(temp);
+	global.returned = true;
+}
 
 #endregion
