@@ -8,7 +8,6 @@ var left = keyboard_check(ord("A"));
 var right = keyboard_check(ord("D"));
 var roll = keyboard_check(vk_space);
 var attack = mouse_check_button_pressed(mb_left);
-var anim = spr_gus;
 
 #endregion
 
@@ -16,7 +15,9 @@ var anim = spr_gus;
 #region Moving
 
 if (state == "move_state"){
-	if (!attacking){
+	//moving sprites
+	if (!attacking){ 
+	//check for attacking variable so doesnt switch to movement sprites while attacking
 		switch(direction){
 			case 0:
 				sprite_index = spr_gus_right_m;
@@ -44,6 +45,7 @@ if (state == "move_state"){
 				break;
 		}
 	}
+	//idle sprites, only happen when speed is 0
 	if(!attacking && speed == 0){
 		switch(direction){
 			case 0:
@@ -98,11 +100,43 @@ if (state == "move_state"){
 //check that not in roll state already and roll isn't on cd
 if (roll && (state != "roll_state") && !rollOnCD){
 	state = "roll_state";
-	//roll length
+	
+	//set the animation to roll animation
 	if(!attacking){
-		sprite_index = spr_gus_down_r;
+	
+	/*check the attacking variable because the code to spawn the 
+	hitbox spawns it on the second frame of the current animation, 
+	if the current animation is the rolling one it will cause 
+	problems*/
+	
+		//the dash/roll duration lasts as long as the duration of the animation
+		switch(direction){
+			case 0:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 45:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 90:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 135:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 180:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 225:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 270:
+				sprite_index = spr_gus_down_r;
+				break;
+			case 315:
+				sprite_index = spr_gus_down_r;
+				break;
+		}           
 	}
-	//alarm[0] = 15;
 }
 
 //roll code
@@ -117,7 +151,6 @@ if(state == "roll_state"){
 
 //check if attack pressed
 if(attack && state != "roll_state" && !attacking){
-	show_debug_message("attacking");
 	attacking = true;
 	//attack animation
 	sprite_index = spr_gus_attk;
@@ -125,13 +158,8 @@ if(attack && state != "roll_state" && !attacking){
 
 //attack
 if(attacking){
-	show_debug_message("attacking code");
 	//second frame of the attack and if the hitbox doesnt exist 
-	if(true){
-		
-	}
 	if(image_index >= 2 && !instance_exists(obj_damage)){
-		show_debug_message("spawnbox");
 		//set timer to delete the attack hitbox
 		alarm[2] = 2;
 		//create sword hitbox to the right of the player
@@ -219,7 +247,7 @@ if(place_meeting(x,y,obj_return)){
 #endregion
 
 
-#region Animations and Sounds
+#region Experimental - Animations and Sounds
 /*
 if(anim != sprite_index){
 	sprite_index = anim;
