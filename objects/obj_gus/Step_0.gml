@@ -122,7 +122,9 @@ if(instance_place(x, y+vspeed, obj_enemy1)){
 
 /* player might have to play through entire area again if they 
 walk through the change level obj after exit, think of way to 
-prevent that from happening */
+prevent that from happening */ 
+
+//^^^changed room to persistent, we'll see how that works
 
 //check if returned to main room
 if(global.returned){
