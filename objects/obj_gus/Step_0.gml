@@ -74,7 +74,6 @@ if (state == "move_state"){
 				break;
 		}
 	}
-	//sprite_index = spr_gus;
 	//calculate direction
 	move_x = right - left;
 	move_y = down - up;
@@ -160,8 +159,6 @@ if(attack && state != "roll_state" && !attacking){
 if(attacking){
 	//second frame of the attack and if the hitbox doesnt exist 
 	if(image_index >= 2 && !instance_exists(obj_damage)){
-		//set timer to delete the attack hitbox
-		alarm[2] = 2;
 		//create sword hitbox to the right of the player
 		instance_create_layer(x+10, y-5, layer, obj_damage);		
 	}
@@ -213,11 +210,9 @@ if(instance_place(x, y+vspeed, obj_enemy1)){
 
 #region Enter Different Area
 
-/* player might have to play through entire area again if they 
-walk through the change level obj after exit, think of way to 
-prevent that from happening */ 
-
-//^^^changed room to persistent, we'll see how that works
+/* use persistent rooms to prevent player from 
+playing through entire area again if they walk 
+through the change level obj after exit */ 
 
 //check if returned to main room
 if(global.returned){
