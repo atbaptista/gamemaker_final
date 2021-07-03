@@ -155,15 +155,55 @@ if(state == "roll_state"){
 if(attack && state != "roll_state" && !attacking){
 	attacking = true;
 	//attack animation
-	sprite_index = spr_gus_attk;
+	//sprite_index = spr_gus_attk;
+	switch(direction){
+		case 315:
+		case 45:
+		case 0:
+			sprite_index = spr_gus_right_a;
+			break;
+		case 135:
+		case 225:
+		case 180:
+			sprite_index = spr_gus_left_a;
+			break;
+		case 90:
+			sprite_index = spr_gus_up_a;
+			break;
+		case 270:
+			sprite_index = spr_gus_down_a;
+			break;
+	}
 }
 
 //attack
 if(attacking){
 	//second frame of the attack and if the hitbox doesnt exist 
 	if(image_index >= 2 && !instance_exists(obj_damage)){
-		//create sword hitbox to the right of the player
-		instance_create_layer(x+10, y-5, layer, obj_damage);		
+		//instance_create_layer(x+10, y-5, layer, obj_damage);
+		//create sword hitbox
+		switch(direction){
+			//right
+			case 315:
+			case 45:
+			case 0:
+				instance_create_layer(x+13, y-5, layer, obj_damage);
+				break;
+			//left
+			case 135:
+			case 225:
+			case 180:
+				instance_create_layer(x-13, y-5, layer, obj_damage);
+				break;
+			//up
+			case 90:
+				instance_create_layer(x, y-12, layer, obj_damage);
+				break;
+			//down
+			case 270:
+				instance_create_layer(x, y, layer, obj_damage);
+				break;
+		}
 	}
 }
 
@@ -234,7 +274,7 @@ if(nextArea){
 //send player back to the main room and set the returned var to true
 if(place_meeting(x,y,obj_return)){
 	//change this to main room after levels are made
-	room_goto(temp);
+	room_goto(main_area);
 	global.returned = true;
 }
 

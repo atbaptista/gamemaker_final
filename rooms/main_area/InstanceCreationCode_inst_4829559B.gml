@@ -1,0 +1,1 @@
+nextRoom = water_area;

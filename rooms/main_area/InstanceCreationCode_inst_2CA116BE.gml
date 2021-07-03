@@ -1,1 +1,1 @@
-nextRoom = temp;
+nextRoom = snow_area;

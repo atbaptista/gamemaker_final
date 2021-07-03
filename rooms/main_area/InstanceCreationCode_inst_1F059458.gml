@@ -1,0 +1,1 @@
+nextRoom = sand_area;

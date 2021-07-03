@@ -1,0 +1,1 @@
+nextRoom = rock_area;
