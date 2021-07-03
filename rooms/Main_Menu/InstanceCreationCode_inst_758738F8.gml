@@ -1,2 +1,2 @@
- link = temp;
-linkName = "temp lvl";
+ link = main_area;
+linkName = "start";

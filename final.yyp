@@ -7,6 +7,7 @@
     {"id":{"name":"obj_damage","path":"objects/obj_damage/obj_damage.yy",},"order":2,},
     {"id":{"name":"spr_gus_left_down_m","path":"sprites/spr_gus_left_down_m/spr_gus_left_down_m.yy",},"order":9,},
     {"id":{"name":"spr_gus_right_down_i","path":"sprites/spr_gus_right_down_i/spr_gus_right_down_i.yy",},"order":12,},
+    {"id":{"name":"main_area","path":"rooms/main_area/main_area.yy",},"order":3,},
     {"id":{"name":"spr_gus_right_i","path":"sprites/spr_gus_right_i/spr_gus_right_i.yy",},"order":13,},
     {"id":{"name":"spr_gus_down_m","path":"sprites/spr_gus_down_m/spr_gus_down_m.yy",},"order":8,},
     {"id":{"name":"spr_gus_left_m","path":"sprites/spr_gus_left_m/spr_gus_left_m.yy",},"order":10,},
@@ -27,6 +28,7 @@
     {"id":{"name":"spr_gus","path":"sprites/spr_gus/spr_gus.yy",},"order":0,},
     {"id":{"name":"obj_gus","path":"objects/obj_gus/obj_gus.yy",},"order":0,},
     {"id":{"name":"spr_gus_left_up_i","path":"sprites/spr_gus_left_up_i/spr_gus_left_up_i.yy",},"order":11,},
+    {"id":{"name":"spr_main_area","path":"sprites/spr_main_area/spr_main_area.yy",},"order":13,},
     {"id":{"name":"spr_gus_down_r","path":"sprites/spr_gus_down_r/spr_gus_down_r.yy",},"order":0,},
     {"id":{"name":"obj_control","path":"objects/obj_control/obj_control.yy",},"order":7,},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},"order":6,},
@@ -61,6 +63,7 @@
     {"roomId":{"name":"Main_Menu","path":"rooms/Main_Menu/Main_Menu.yy",},},
     {"roomId":{"name":"temp","path":"rooms/temp/temp.yy",},},
     {"roomId":{"name":"temp2","path":"rooms/temp2/temp2.yy",},},
+    {"roomId":{"name":"main_area","path":"rooms/main_area/main_area.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

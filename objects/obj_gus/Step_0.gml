@@ -87,7 +87,10 @@ if (state == "move_state"){
 		speed = mspeed;	
 	//momentum if i ever make the move speed fast
 	} else if (speed > 0){		
-		speed--;	
+		speed -= .15;	
+	//since speed is a decimal
+	} else if (speed < 0){
+		speed = 0;
 	}
 }
 
@@ -209,10 +212,6 @@ if(instance_place(x, y+vspeed, obj_enemy1)){
 
 
 #region Enter Different Area
-
-/* use persistent rooms to prevent player from 
-playing through entire area again if they walk 
-through the change level obj after exit */ 
 
 //check if returned to main room
 if(global.returned){
