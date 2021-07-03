@@ -113,30 +113,27 @@ if (roll && (state != "roll_state") && !rollOnCD){
 	
 		//the dash/roll duration lasts as long as the duration of the animation
 		switch(direction){
+			//right
 			case 0:
-				sprite_index = spr_gus_down_r;
-				break;
 			case 45:
-				sprite_index = spr_gus_down_r;
+			case 315:
+				sprite_index = spr_gus_right_r;
 				break;
+			//up
 			case 90:
-				sprite_index = spr_gus_down_r;
+				sprite_index = spr_gus_up_r;
 				break;
-			case 135:
-				sprite_index = spr_gus_down_r;
-				break;
-			case 180:
-				sprite_index = spr_gus_down_r;
-				break;
-			case 225:
-				sprite_index = spr_gus_down_r;
-				break;
+			//down
 			case 270:
 				sprite_index = spr_gus_down_r;
 				break;
-			case 315:
-				sprite_index = spr_gus_down_r;
+			//left
+			case 135:
+			case 225:
+			case 180:
+				sprite_index = spr_gus_left_r;
 				break;
+			
 		}           
 	}
 }
@@ -197,7 +194,7 @@ if(attacking){
 				break;
 			//up
 			case 90:
-				instance_create_layer(x, y-12, layer, obj_damage);
+				instance_create_layer(x+5, y-12, layer, obj_damage);
 				break;
 			//down
 			case 270:
