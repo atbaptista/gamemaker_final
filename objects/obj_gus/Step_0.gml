@@ -152,7 +152,6 @@ if(state == "roll_state"){
 if(attack && state != "roll_state" && !attacking){
 	attacking = true;
 	//attack animation
-	//sprite_index = spr_gus_attk;
 	switch(direction){
 		case 315:
 		case 45:
@@ -176,21 +175,20 @@ if(attack && state != "roll_state" && !attacking){
 //attack
 if(attacking){
 	//second frame of the attack and if the hitbox doesnt exist 
-	if(image_index >= 2 && !instance_exists(obj_damage)){
-		//instance_create_layer(x+10, y-5, layer, obj_damage);
+	if(/*image_index >= 2 &&*/ !instance_exists(obj_damage)){
 		//create sword hitbox
 		switch(direction){
 			//right
 			case 315:
 			case 45:
 			case 0:
-				instance_create_layer(x+13, y-5, layer, obj_damage);
+				instance_create_layer(x+10, y-5, layer, obj_damage);
 				break;
 			//left
 			case 135:
 			case 225:
 			case 180:
-				instance_create_layer(x-13, y-5, layer, obj_damage);
+				instance_create_layer(x-10, y-5, layer, obj_damage);
 				break;
 			//up
 			case 90:
@@ -254,7 +252,7 @@ if(instance_place(x, y+vspeed, obj_enemy1)){
 if(global.returned){
 	//teleport player outside of the dungeon/level whatever
 	x = global.prev_x;
-	y = global.prev_y+20; //20 pixels lower so they dont teleport back instantly
+	y = global.prev_y+50; //50 pixels lower so they dont teleport back instantly
 	//set global returned to false
 	global.returned = false;
 }

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_change_level",
-    "path": "sprites/spr_change_level/spr_change_level.yy",
+    "name": "spr_return",
+    "path": "sprites/spr_return/spr_return.yy",
   },
   "solid": false,
   "visible": true,
